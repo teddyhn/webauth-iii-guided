@@ -2,6 +2,8 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require("jwt");
 
+const secrets = require('../config/secrets.js');
+
 const Users = require('../users/users-model.js');
 
 // for endpoints beginning with /api/auth
@@ -45,7 +47,7 @@ function generateToken(user) {
     username: user.username,
     subject: user.id
   };
-  
+
   const options = {
     expiresIn: "1h"
   };
